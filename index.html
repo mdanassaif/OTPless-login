@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>OtpLess Login</title>
+  <script src="https://otpless.com/auth.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="main-container">
+    <!-- Login Container -->
+    <div id="otpless-container">
+      <h1>Welcome to <span class="highlight">OtpLess</span></h1>
+      <p>Login quickly and securely using your WhatsApp!</p>
+      <div id="otpless" class="button"></div>
+    </div>
+    
+    <!-- Success Message Container -->
+    <div id="success-container" class="hidden">
+      <h2>🎉 You're logged in!</h2>
+      <p>Welcome <strong>without OTP</strong>, directly through your phone.</p>
+      <div id="user-details"></div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    function otpless(otplessUser) {
+      // Save user info in localStorage
+      localStorage.setItem('userinfo', JSON.stringify(otplessUser));
+
+      // Extract user details
+      const { waName, waNumber, email } = otplessUser;
+
+      // Hide login container and show success message
+      document.getElementById('otpless-container').classList.add('hidden');
+      document.getElementById('success-container').classList.remove('hidden');
+
+      // Display user details dynamically
+      document.getElementById('user-details').innerHTML = `
+        <p><strong>Name:</strong> ${waName}</p>
+        <p><strong>WhatsApp Number:</strong> ${waNumber}</p>
+        <p><strong>Email:</strong> ${email?.email || "Not provided"}</p>
+      `;
+    }
+
+    // Logout functionality
+    function logout() {
+      localStorage.removeItem('userinfo');
+      document.getElementById('success-container').classList.add('hidden');
+      document.getElementById('otpless-container').classList.remove('hidden');
+    }
+
+    // Auto-login if user info exists
+    document.addEventListener('DOMContentLoaded', () => {
+      const userinfo = JSON.parse(localStorage.getItem('userinfo'));
+      if (userinfo) {
+        otpless(userinfo);
+      }
+    });
+  </script>
+</body>
+</html>

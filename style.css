@@ -1,0 +1,96 @@
+/* General Reset */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#main-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+#otpless-container, #success-container {
+    text-align: center;
+    padding: 30px;
+    border: 2px solid #009d88;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 15px;
+}
+
+h1 .highlight {
+    color: #009d88;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+strong {
+    color: #009d88;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Button Styling */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #009d88;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #007d6e;
+}
+
+.logout-btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #009d88;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #007d6e;
+}
+
+/* Hover Effects */
+#otpless-container:hover, #success-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+}
